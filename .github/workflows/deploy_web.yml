@@ -21,4 +21,4 @@ jobs:
           
       - name: Deploy to S3
         run: |
-          aws s3 sync web/ s3://YOUR_BUCKET_NAME/ --delete 
+          aws s3 sync web/ s3://aws-sam-cli-managed-default-samclisourcebucket-g7qixmgyr7wv/ --delete 

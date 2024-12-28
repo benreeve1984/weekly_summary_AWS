@@ -33,6 +33,7 @@ header {
     text-align: center;
     margin-bottom: calc(var(--spacing-unit) * 2);
     padding: var(--spacing-unit);
+    border-bottom: 2px solid var(--border-color);
 }
 
 .workout-form {
