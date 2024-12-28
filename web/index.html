@@ -3,13 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AWS Project</title>
+    <title>Garmin Workouts Tracker</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Add marked.js for markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>AWS Project</h1>
-        <div id="response"></div>
+        <header>
+            <h1>Garmin Workouts Tracker</h1>
+        </header>
+        
+        <main>
+            <form id="workoutForm" class="workout-form">
+                <div class="form-group">
+                    <label for="email">Garmin Connect Email:</label>
+                    <input type="email" id="email" name="email" required 
+                           aria-describedby="emailHelp">
+                    <small id="emailHelp" class="help-text">Enter your Garmin Connect account email</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required
+                           aria-describedby="passwordHelp">
+                    <small id="passwordHelp" class="help-text">Enter your Garmin Connect password</small>
+                </div>
+                
+                <button type="submit" id="retrieveButton" class="button primary">
+                    Retrieve Workouts
+                </button>
+            </form>
+
+            <div id="loadingSpinner" class="loading-spinner hidden">
+                <div class="spinner"></div>
+                <p>Retrieving workouts...</p>
+            </div>
+
+            <div id="errorMessage" class="error-message hidden"></div>
+
+            <div id="workoutDisplay" class="workout-display hidden">
+                <h2>Last Week's Workouts</h2>
+                <div id="markdownContent" class="markdown-content"></div>
+                <button id="copyButton" class="button secondary">
+                    Copy Markdown
+                </button>
+                <div id="copyTooltip" class="tooltip hidden">Copied!</div>
+            </div>
+        </main>
     </div>
     <script src="app.js"></script>
 </body>
