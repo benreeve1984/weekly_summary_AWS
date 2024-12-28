@@ -16,8 +16,19 @@ The project consists of:
   - `template.yaml` - SAM template for AWS deployment
   - `requirements.txt` - Python dependencies
 
-- `web/` - Simple web frontend
-  - `styles.css` - Basic styling
+- `web/` - Responsive web frontend
+  - `index.html` - Main HTML structure with form and display areas
+  - `styles.css` - Mobile-first responsive styling
+  - `app.js` - Frontend logic and API integration
+
+## Features
+
+- Responsive design optimized for both desktop and mobile devices
+- Secure credential handling through HTTPS
+- Real-time loading indicators and error feedback
+- Markdown rendering of workout summaries
+- One-click markdown copying functionality
+- Touch-optimized for mobile devices
 
 ## Setup
 
@@ -34,7 +45,7 @@ The project consists of:
 
 3. Using the API:
    - Send a POST request to the API endpoint with your Garmin credentials:
-     ```
+     ```json
      {
        "email": "your.garmin.email@example.com",
        "password": "your-garmin-password"
@@ -43,13 +54,15 @@ The project consists of:
    - Credentials are only used for the request and are not stored
 
 4. Deploy the web frontend:
-   - Host the web files on your preferred static hosting service
-   - Update the API endpoint URL in the frontend code to point to your deployed Lambda function
+   - Update the API endpoint URL in `web/app.js`
+   - Host the web files on your preferred static hosting service (e.g., AWS S3)
+   - Configure CORS in the API Gateway to allow requests from your hosting domain
 
 5. Usage:
    - Visit the web frontend
-   - Click "Generate Summary" to fetch and display your previous week's training data
-   - The summary will show activities grouped by day with calculated metrics
+   - Enter your Garmin Connect credentials
+   - Click "Retrieve Workouts" to fetch and display your previous week's training data
+   - Use "Copy Markdown" to copy the formatted summary
 
 ## Development
 
@@ -61,12 +74,18 @@ To run locally:
    ```
    sam local start-api
    ```
-4. Open the web frontend in your browser
+4. Serve the web frontend using a local server:
+   ```
+   python -m http.server 8000
+   ```
+5. Open `http://localhost:8000` in your browser
 
 ## Security Notes
 
 - The Lambda function uses IAM roles with minimal required permissions
 - API Gateway endpoints use HTTPS
+- Credentials are transmitted securely and not stored
+- Frontend implements secure practices for handling sensitive data
 
 ## Contributing
 
