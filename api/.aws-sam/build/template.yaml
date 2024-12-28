@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'Garmin Connect API Lambda
+
+  '
+Resources:
+  GarminConnectFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: GarminConnectFunction
+      Handler: handler.process_request
+      Runtime: python3.9
+      CodeUri: GarminConnectFunction
+      MemorySize: 512
+      Timeout: 30
+      Policies:
+      - AWSLambdaBasicExecutionRole
+      Events:
+        GarminConnectAPI:
+          Type: Api
+          Properties:
+            Path: /get-workouts
+            Method: post
+    Metadata:
+      SamResourceId: GarminConnectFunction
+Outputs:
+  GarminConnectAPIEndpoint:
+    Description: API Gateway endpoint URL for Prod stage
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/get-workouts

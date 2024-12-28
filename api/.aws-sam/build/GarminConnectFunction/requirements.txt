@@ -1,0 +1,4 @@
+boto3==1.26.137
+requests==2.31.0
+garminconnect
+garth 

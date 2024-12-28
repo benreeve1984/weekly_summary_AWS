@@ -32,12 +32,15 @@ The project consists of:
    - Configure AWS credentials with appropriate permissions
    - Run `sam build` and `sam deploy` to deploy the Lambda function
 
-3. Set up Garmin Connect credentials:
-   - Create environment variables for your Garmin Connect login:
+3. Using the API:
+   - Send a POST request to the API endpoint with your Garmin credentials:
      ```
-     GARMIN_EMAIL=your_email
-     GARMIN_PASSWORD=your_password
+     {
+       "email": "your.garmin.email@example.com",
+       "password": "your-garmin-password"
+     }
      ```
+   - Credentials are only used for the request and are not stored
 
 4. Deploy the web frontend:
    - Host the web files on your preferred static hosting service
@@ -62,7 +65,6 @@ To run locally:
 
 ## Security Notes
 
-- Garmin Connect credentials should be stored securely as environment variables
 - The Lambda function uses IAM roles with minimal required permissions
 - API Gateway endpoints use HTTPS
 

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_ENDPOINT = 'YOUR_API_GATEWAY_URL';
+    const API_ENDPOINT = 'https://vys5g98ar0.execute-api.eu-west-2.amazonaws.com/Prod/get-workouts';
     
     async function fetchData() {
         try {
