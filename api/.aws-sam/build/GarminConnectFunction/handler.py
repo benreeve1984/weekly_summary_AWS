@@ -175,7 +175,7 @@ def process_activities(activities):
             pace_sec_per_km = calculate_pace(activity['duration'], activity['distance'], per_meter=False)
             pace_str = format_pace(pace_sec_per_km)
             ef = calculate_ef_run(activity['duration'], activity['distance'], avg_hr)
-            activity_info = f"Run: {duration_str}; HR {avg_hr}; pace {pace_str}; EF {ef}"
+            activity_info = f"Run: {duration_str}; HR {avg_hr}; Pace {pace_str}; EF {ef}"
             
             summary_metrics['running'].update({
                 'count': summary_metrics['running']['count'] + 1,
@@ -188,7 +188,7 @@ def process_activities(activities):
         elif activity_type == 'lap_swimming':
             pace_sec_per_100m = (calculate_pace(activity['duration'], activity['distance'], per_meter=False)) / 10
             pace_str = format_pace_swim(pace_sec_per_100m)
-            activity_info = f"Swim: {duration_str}; HR {avg_hr}; pace {pace_str}"
+            activity_info = f"Swim: {duration_str}; HR {avg_hr}; Pace {pace_str}"
             
             summary_metrics['lap_swimming'].update({
                 'count': summary_metrics['lap_swimming']['count'] + 1,
