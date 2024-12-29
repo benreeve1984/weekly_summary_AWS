@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const API_ENDPOINT = 'https://vys5g98ar0.execute-api.eu-west-2.amazonaws.com/Prod/get-workouts';
     
-    // Get DOM elements
+    // Get DOM elements for form interaction
     const form = document.getElementById('workoutForm');
     const retrieveButton = document.getElementById('retrieveButton');
     const loadingSpinner = document.getElementById('loadingSpinner');
