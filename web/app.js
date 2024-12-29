@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Display markdown content
-            markdownContent.innerHTML = marked.parse(data.markdown);
+            markdownContent.textContent = data.markdown;
             workoutDisplay.classList.remove('hidden');
             form.reset();
 

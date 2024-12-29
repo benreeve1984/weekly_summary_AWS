@@ -137,6 +137,10 @@ input {
     background-color: #f8f9fa;
     border-radius: 4px;
     white-space: pre-wrap;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.4;
+    overflow-x: auto;
 }
 
 .error-message {
@@ -187,6 +191,7 @@ input {
     }
 
     .markdown-content {
-        font-size: 14px;
+        font-size: 12px;
+        padding: calc(var(--spacing-unit) * 0.75);
     }
 } 
