@@ -308,11 +308,10 @@ def process_request(event, context):
         garmin.login()
         print("Client headers after login:", garmin.session.headers if hasattr(garmin, 'session') else "No session")
 
-        # Get last week's date range
+        # Get last week's date range using today as reference
         today = datetime.now()
-        last_week_end = today - timedelta(days=today.weekday() + 1)  # Last Sunday
-        last_week_start = last_week_end - timedelta(days=6)  # Last Monday
-        start_date, end_date = last_week_start, last_week_end
+        start_date, end_date = get_last_week_date_range(today)
+        last_week_start, last_week_end = start_date, end_date
 
         # Fetch activities
         activities = fetch_activities(garmin, start_date, end_date)
@@ -321,7 +320,7 @@ def process_request(event, context):
         daily_summary, weekly_totals = process_activities(activities)
 
         # Generate markdown
-        markdown = generate_markdown(weekly_totals, daily_summary, last_week_start)
+        markdown = generate_markdown(weekly_totals, daily_summary, start_date)
 
         return {
             'statusCode': 200,
